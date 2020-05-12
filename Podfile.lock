@@ -1,0 +1,24 @@
+PODS:
+  - FontAwesome.swift (1.9.0)
+  - Hero (1.5.0)
+  - SPAlert (2.1.4)
+
+DEPENDENCIES:
+  - FontAwesome.swift
+  - Hero
+  - SPAlert
+
+SPEC REPOS:
+  trunk:
+    - FontAwesome.swift
+    - Hero
+    - SPAlert
+
+SPEC CHECKSUMS:
+  FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
+  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
+  SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
+
+PODFILE CHECKSUM: dbb2e6fd6b4f5d04e596954c91452108f38d2554
+
+COCOAPODS: 1.9.1

@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-Memo/Pods-Memo-frameworks.sh
+${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework
+${BUILT_PRODUCTS_DIR}/Hero/Hero.framework
+${BUILT_PRODUCTS_DIR}/SPAlert/SPAlert.framework
