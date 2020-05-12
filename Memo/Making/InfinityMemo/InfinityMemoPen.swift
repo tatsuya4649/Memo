@@ -11,7 +11,7 @@ import UIKit
 
 extension InfinityMemoController{
     //下からペンシルツールを出現させる
-    @objc func doubleTap(_ sender:UISwipeGestureRecognizer){
+    @objc func doubleTap(_ sender:UITapGestureRecognizer){
         guard let nowMakingView = nowMakingView else { return }
         nowMakingView.addingPencilTool()
         self.closeBackgroundSetting()

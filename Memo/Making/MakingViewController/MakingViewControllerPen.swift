@@ -47,6 +47,12 @@ extension MakingViewController:PKCanvasViewDelegate{
     }
     @objc func closePencil(){
         removePencilTool()
+        penTextButton()
+        guard let parent = parent else{return}
+        if let parent = parent as? InfinityMemoController{
+            parent.releaseScroll()
+        }
+        parent.navigationItem.leftBarButtonItem = nil
     }
     public func removePencilTool(){
         if canvas != nil{

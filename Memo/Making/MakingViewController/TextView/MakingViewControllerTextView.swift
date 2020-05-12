@@ -88,6 +88,7 @@ extension MakingViewController:UITextViewDelegate{
             parent.releaseScroll()
         }
         parent.navigationItem.leftBarButtonItem = nil
+        penTextButton()
     }
 
     public func saveText() throws -> Data?{

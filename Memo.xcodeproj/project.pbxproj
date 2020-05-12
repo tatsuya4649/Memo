@@ -32,6 +32,8 @@
 		7471E9F52444567800D599DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7471E9F32444567800D599DC /* LaunchScreen.storyboard */; };
 		7471E9FD2444571800D599DC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7471E9FC2444571800D599DC /* TabBarController.swift */; };
 		7471E9FF24445B3E00D599DC /* MakingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7471E9FE24445B3E00D599DC /* MakingViewController.swift */; };
+		748210F0246A52530068C226 /* PenTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748210EF246A52530068C226 /* PenTextButton.swift */; };
+		748210F2246A599F0068C226 /* MemoPenTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748210F1246A599F0068C226 /* MemoPenTextButton.swift */; };
 		7499533E244461180060E879 /* MemoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7499533D244461180060E879 /* MemoList.swift */; };
 		749953442444631C0060E879 /* MakingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749953432444631C0060E879 /* MakingNavigationController.swift */; };
 		74BE49772446BDFD0065C6AC /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BE49762446BDFD0065C6AC /* Keyboard.swift */; };
@@ -74,6 +76,8 @@
 		7471E9F62444567800D599DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7471E9FC2444571800D599DC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7471E9FE24445B3E00D599DC /* MakingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingViewController.swift; sourceTree = "<group>"; };
+		748210EF246A52530068C226 /* PenTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenTextButton.swift; sourceTree = "<group>"; };
+		748210F1246A599F0068C226 /* MemoPenTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoPenTextButton.swift; sourceTree = "<group>"; };
 		7499533D244461180060E879 /* MemoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoList.swift; sourceTree = "<group>"; };
 		749953432444631C0060E879 /* MakingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingNavigationController.swift; sourceTree = "<group>"; };
 		74BE49762446BDFD0065C6AC /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			children = (
 				743E1A0E2445527F00C1D957 /* InfinityMemoController.swift */,
 				7470249B2445B16000415F07 /* InfinityMemoBackground.swift */,
+				748210EF246A52530068C226 /* PenTextButton.swift */,
 				7470248F2445931700415F07 /* InfinityMemoPen.swift */,
 				747024962445AE4800415F07 /* InfinityMemoTextView.swift */,
 				7470248D24458CDA00415F07 /* InfinityMemoNavigation.swift */,
@@ -140,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				7471E9FE24445B3E00D599DC /* MakingViewController.swift */,
+				748210F1246A599F0068C226 /* MemoPenTextButton.swift */,
 				74DF39C82465360B009D906D /* MakingDataApply.swift */,
 				74CC3A1F2460227100183694 /* DeleteCanvasTextForSave.swift */,
 				742146272466884B0003DD53 /* DetailMemoGesture.swift */,
@@ -366,6 +372,7 @@
 				747024932445AC0100415F07 /* MakingViewControllerPen.swift in Sources */,
 				7471E9E62444567600D599DC /* AppDelegate.swift in Sources */,
 				74E3C8572462C3D7002A6342 /* SaveToDataBaseAll.swift in Sources */,
+				748210F2246A599F0068C226 /* MemoPenTextButton.swift in Sources */,
 				743E1A182445656500C1D957 /* InfinitySetting.swift in Sources */,
 				7470248E24458CDA00415F07 /* InfinityMemoNavigation.swift in Sources */,
 				7471E9EB2444567600D599DC /* Memo.xcdatamodeld in Sources */,
@@ -388,6 +395,7 @@
 				7470249C2445B16000415F07 /* InfinityMemoBackground.swift in Sources */,
 				74BE49772446BDFD0065C6AC /* Keyboard.swift in Sources */,
 				7471E9FD2444571800D599DC /* TabBarController.swift in Sources */,
+				748210F0246A52530068C226 /* PenTextButton.swift in Sources */,
 				74E3C8592462C811002A6342 /* GettingMemoFromDataBase.swift in Sources */,
 				7471E9E82444567600D599DC /* SceneDelegate.swift in Sources */,
 				7499533E244461180060E879 /* MemoList.swift in Sources */,

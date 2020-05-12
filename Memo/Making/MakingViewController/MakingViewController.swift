@@ -50,10 +50,13 @@ class MakingViewController: UIViewController {
     var memoDataArray : Array<Memo>!
     var manageContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var shareBool : Bool!
+    var penButton : UIButton!
+    var textButton : UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         addKeyboardDetection()
+        penTextButton()
         // Do any additional setup after loading the view.
     }
     override func viewWillDisappear(_ animated: Bool) {

@@ -29,7 +29,7 @@ extension MakingViewController{
             textView.frame = self.view.frame
         }
     }
-    @objc func doubleTap(_ sender:UISwipeGestureRecognizer){
+    @objc func doubleTap(_ sender:UITapGestureRecognizer){
         self.addingPencilTool()
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .chevronDown, style: .solid, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action:  #selector(closePencilDetail))]
@@ -55,6 +55,7 @@ extension MakingViewController{
         self.navigationItem.hidesBackButton = false
         removePencilTool()
         openBackgroundSetting()
+        penTextButton()
     }
     @objc func longPress(_ sender:UILongPressGestureRecognizer){
         self.navigationItem.hidesBackButton = true
@@ -66,6 +67,7 @@ extension MakingViewController{
         self.navigationItem.hidesBackButton = false
         textView.isEditable = false
         textView.resignFirstResponder()
+        penTextButton()
     }
     private func addBackgroundSettingButton(){
         guard backgroundVisualEffect == nil else{return}

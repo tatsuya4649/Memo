@@ -55,6 +55,10 @@ extension MemoListViewController{
         guard let number = dic[.number] as? Int64 else{return false}
         guard let memoDate = dic[.saveDate] as? Date else{return false}
         var bool = Bool(true)
+        guard memoDataDicArray.count > 0 else{
+            memoDataDicArray.append(dic)
+            return true
+        }
         //すでに追加されているデータの中身から1つずつ取り出す
         for at in 0..<memoDataDicArray.count{
             if let dataNumber = memoDataDicArray[at][.number] as? Int64{

@@ -66,31 +66,52 @@ class InfinityMemoController: UIPageViewController,UIPageViewControllerDataSourc
     var manageContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var memoDataDicArray : Array<Dictionary<MemoDataElement,Any?>>!
     weak var saveDelegate : InfinityMemoControllerDelegate!
+    var penButton : UIButton!
+    var textButton : UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        memoDataArray = Array<Memo>()
+        let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "Memo")
+        
+        //同じメモ番号のメモを全て削除する
+        do{
+            memoDataArray = try? manageContext.fetch(fetchReq) as? Array<Memo>
+            if memoDataArray.count > 0{
+                for i in memoDataArray{
+                    manageContext.delete(i)
+                }
+            }
+            do{
+                try manageContext.save()
+            }catch{
+                print("セーブに失敗しました")
+            }
+        }catch{
+            print(error)
+        }
         self.title = "メモ作成"
         self.pageViewCounter = Int(0)
         making1 = MakingViewController()
         making1.restorationIdentifier = "making1"
-        making1.view.backgroundColor = .red
-        making1.defaultBackgroundColor = .red
+        making1.view.backgroundColor = .white
+        making1.defaultBackgroundColor = .white
         making1.page = 0
         making2 = MakingViewController()
         making2.restorationIdentifier = "making2"
-        making2.view.backgroundColor = .blue
-        making2.defaultBackgroundColor = .blue
+        making2.view.backgroundColor = .white
+        making2.defaultBackgroundColor = .white
         making3 = MakingViewController()
         making3.restorationIdentifier = "making3"
-        making3.view.backgroundColor = .green
-        making3.defaultBackgroundColor = .green
+        making3.view.backgroundColor = .white
+        making3.defaultBackgroundColor = .white
         making4 = MakingViewController()
         making4.restorationIdentifier = "making4"
-        making4.view.backgroundColor = .yellow
-        making4.defaultBackgroundColor = .yellow
+        making4.view.backgroundColor = .white
+        making4.defaultBackgroundColor = .white
         making5 = MakingViewController()
         making5.restorationIdentifier = "making5"
-        making5.view.backgroundColor = .gray
-        making5.defaultBackgroundColor = .gray
+        making5.view.backgroundColor = .white
+        making5.defaultBackgroundColor = .white
         nowMakingView = making1
         //beforeMakingView = making1
         self.setViewControllers([making1], direction: .forward, animated: true, completion: nil)
@@ -117,6 +138,7 @@ class InfinityMemoController: UIPageViewController,UIPageViewControllerDataSourc
         //making4.view.frame = self.view.bounds
         //making5.view.frame = self.view.bounds
         addBackgroundSettingButton()
+        //penTextButton()
     }
     public func saveData(_ saveView:MakingViewController,_ number:Int){
         memoDataArray = Array<Memo>()
