@@ -18,6 +18,7 @@ extension InfinityMemoController{
         pdfButton = UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .filePdf, style: .regular, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action:  #selector(pdfMake))
         shareButton = UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .shareSquare, style: .regular, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action:  #selector(share))
         self.navigationItem.rightBarButtonItems = [shareButton,imageSaveButton,pdfButton]
+        penTextButtonNavi()
     }
     @objc func imageSave(_ sender:UIButton){
         print("画像にする")
@@ -75,5 +76,21 @@ extension InfinityMemoController{
         }else{
             return nil
         }
+    }
+    public func penTextButtonNavi(){
+        penNaviButton = UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .pencilAlt, style: .solid, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(penNaviButtonClick))
+        textNaviButton = UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .font, style: .solid, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(textNaviButtonClick))
+        self.navigationItem.rightBarButtonItems?.append(penNaviButton)
+        self.navigationItem.rightBarButtonItems?.append(textNaviButton)
+    }
+    @objc func penNaviButtonClick(_ sender:UIBarButtonItem){
+        print("ペンボタンがクリックされました")
+        guard let _ = nowMakingView else{return}
+        penButtonClick()
+    }
+    @objc func textNaviButtonClick(_ sender:UIBarButtonItem){
+        print("テキストボタンがクリックされました")
+        guard let _ = nowMakingView else{return}
+        textButtonClick()
     }
 }

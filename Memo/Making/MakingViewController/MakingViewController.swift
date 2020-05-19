@@ -52,20 +52,30 @@ class MakingViewController: UIViewController {
     var shareBool : Bool!
     var penButton : UIButton!
     var textButton : UIButton!
+    var penNaviButton : UIBarButtonItem!
+    var textNaviButton : UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         addKeyboardDetection()
-        penTextButton()
+        //penTextButtonNavi()
+        //penTextButton()
         // Do any additional setup after loading the view.
     }
     override func viewWillDisappear(_ animated: Bool) {
-        guard let detailBool = detailBool else{return}
+        guard let _ = detailBool else{return}
         print("詳細メイキング画面から離れてしまいますよ")
-        
         saveDetailMaking()
         guard let list = self.navigationController?.viewControllers.first as? MemoListViewController else{return}
         list.getData()
+    }
+    override func viewWillLayoutSubviews() {
+        if canvas != nil{
+            canvas.frame = self.view.bounds
+        }
+        if textView != nil{
+            textView.frame = self.view.bounds
+        }
     }
     /*
     // MARK: - Navigation

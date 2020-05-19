@@ -91,12 +91,10 @@ extension MakingViewController{
         pdfButton = UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .filePdf, style: .regular, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action:  #selector(pdfMake))
         shareButton = UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .shareSquare, style: .regular, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action:  #selector(share))
         self.navigationItem.rightBarButtonItems = [shareButton,imageSaveButton,pdfButton]
+        penTextButtonNavi()
     }
     @objc func imageSave(_ sender:UIButton){
         print("画像にする")
-        print(self.view.frame)
-        print(self.navigationController)
-        print(self.tabBarController)
         chengeTheViewSize()
         backgroundScrollView.alpha = 0
         if let image = viewImage(){
@@ -106,6 +104,9 @@ extension MakingViewController{
             SPAlert.present(title: "エラー", message: "メモの画像化に失敗しました", preset: .error)
         }
         backgroundScrollView.alpha = 1
+        if self.navigationController != nil{
+            self.navigationController!.navigationBar.isTranslucent = true
+        }
     }
     @objc func pdfMake(_ sender:UIButton){
         backgroundScrollView.alpha = 0
@@ -134,6 +135,9 @@ extension MakingViewController{
         }
         
         backgroundScrollView.alpha = 1
+        if self.navigationController != nil{
+            self.navigationController!.navigationBar.isTranslucent = true
+        }
     }
     @objc func share(_ sender:UIButton){
         print("メモを共有する")
@@ -158,6 +162,9 @@ extension MakingViewController{
             self!.shareBool = nil
         }
         self.present(activitiView, animated: true, completion: nil)
+        if self.navigationController != nil{
+            self.navigationController!.navigationBar.isTranslucent = true
+        }
     }
     private func viewImage() -> UIImage?{
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0.0)
@@ -171,15 +178,28 @@ extension MakingViewController{
         }
     }
     private func chengeTheViewSize(){
+        if self.navigationController != nil{
+            self.navigationController!.navigationBar.isTranslucent = false
+        }
         let naviHeight = self.navigationController != nil ? self.navigationController!.navigationBar.frame.size.height : 0
         let statusHeight = UIApplication.shared.statusBarFrame.size.height
         let tabHeight = self.tabBarController != nil ? self.tabBarController!.tabBar.frame.size.height : 0
-        self.view.frame = CGRect(x: 0, y: naviHeight+statusHeight, width: self.view.frame.size.width, height: self.view.frame.size.height - (naviHeight+statusHeight+tabHeight))
+        self.view.frame = CGRect(x: 0, y: naviHeight+statusHeight, width: self.view.frame.size.width, height: self.view.frame.size.height - (tabHeight))
         if canvas != nil{
             canvas.frame = self.view.bounds
         }
         if textView != nil{
             textView.frame = self.view.bounds
         }
+    }
+    ///描画内容のRectを全体的に変更するためのメソッド
+    public func changeRect(_ rect:CGRect){
+        if canvas != nil{
+            canvas.frame = rect
+        }
+        if textView != nil{
+            textView.frame = rect
+        }
+        self.view.frame = rect
     }
 }

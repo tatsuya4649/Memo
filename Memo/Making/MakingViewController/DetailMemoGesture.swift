@@ -17,17 +17,8 @@ extension MakingViewController{
         self.view.addGestureRecognizer(tapGesture)
         longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
         self.view.addGestureRecognizer(longTapGesture)
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        self.view.frame = CGRect(x: 0, y: statusBarHeight + naviHeight, width: self.view.frame.size.width, height: self.view.frame.size.height - (statusBarHeight + naviHeight + tabHeight))
-        print(self.view.frame)
-        
+       
         addBackgroundSettingButton()
-        if canvas != nil{
-            canvas.frame = self.view.bounds
-        }
-        if textView != nil{
-            textView.frame = self.view.frame
-        }
     }
     @objc func doubleTap(_ sender:UITapGestureRecognizer){
         self.addingPencilTool()

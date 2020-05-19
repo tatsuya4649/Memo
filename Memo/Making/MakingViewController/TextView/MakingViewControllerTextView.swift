@@ -12,27 +12,31 @@ import UIKit
 extension MakingViewController:UITextViewDelegate{
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         print(range.location)
-        print(text)
-        print(nowStringAttribute)
-        var attributes: [NSAttributedString.Key : Any] = [
-            .foregroundColor : UIColor.black,
-            .font : font != nil ? font! : UIFont.systemFont(ofSize: 20),
-            .paragraphStyle : textAlign != nil ? textAlign! : NSTextAlignment.left
-        ]
-        if underLineType != nil{
-            attributes[.underlineStyle] = underLineType.rawValue
-            if (underLineType == .patternDash || underLineType == .patternDashDot || underLineType == .patternDashDotDot || underLineType == .patternDot){
-                attributes[.underlineStyle] = underLineType.union(.single).rawValue
-            }
-        }
-        if strikethroughType != nil{
-            attributes[.strikethroughStyle] = strikethroughType.rawValue
-            attributes[.strikethroughColor] = UIColor.black
-        }
-        let stringAttribute = NSAttributedString(string: text, attributes: attributes)
-        nowStringAttribute.append(stringAttribute)
-        textView.attributedText = nowStringAttribute
-        return false
+        return true
+        //if text.count == 0{
+            //return true
+        //}else{
+            //print(nowStringAttribute)
+            //var attributes: [NSAttributedString.Key : Any] = [
+                //.foregroundColor : UIColor.black,
+                //.font : font != nil ? font! : UIFont.systemFont(ofSize: 20),
+                //.paragraphStyle : textAlign != nil ? textAlign! : NSTextAlignment.left
+            //]
+            //if underLineType != nil{
+                //attributes[.underlineStyle] = underLineType.rawValue
+                //if (underLineType == .patternDash || underLineType == .patternDashDot || underLineType == .patternDashDotDot || underLineType == .patternDot){
+                    //attributes[.underlineStyle] = underLineType.union(.single).rawValue
+                //}
+            //}
+            //if strikethroughType != nil{
+                //attributes[.strikethroughStyle] = strikethroughType.rawValue
+                //attributes[.strikethroughColor] = UIColor.black
+            //}
+            //let stringAttribute = NSAttributedString(string: text, attributes: attributes)
+            //nowStringAttribute.append(stringAttribute)
+            //textView.attributedText = nowStringAttribute
+            //return false
+        //}
     }
     func textViewDidChange(_ textView: UITextView) {
         print(preTextViewCount)
@@ -55,12 +59,7 @@ extension MakingViewController:UITextViewDelegate{
         }
     }
     public func addTextView(){
-        if textView == nil{
-            textView = CustomTextView(frame: self.view.bounds)
-            textView.backgroundColor = .clear
-            textView.delegate = self
-            self.view.addSubview(textView)
-        }
+        onlyAddingTextView()
         textView.isEditable = true
         textView.becomeFirstResponder()
         if preTextViewCount == nil{
@@ -77,6 +76,8 @@ extension MakingViewController:UITextViewDelegate{
             textAlign.alignment = .left
         }
         guard let parent = self.parent else{return}
+        parent.title = nil
+        parent.tabBarItem.title = DEFAULT_INFINITYVIEW_TITLE
         parent.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .chevronDown, style: .solid, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action:  #selector(closeTextView))]
         
     }
@@ -87,8 +88,10 @@ extension MakingViewController:UITextViewDelegate{
         if let parent = parent as? InfinityMemoController{
             parent.releaseScroll()
         }
+        parent.title = DEFAULT_INFINITYVIEW_TITLE
+        parent.tabBarItem.title = DEFAULT_INFINITYVIEW_TITLE
         parent.navigationItem.leftBarButtonItem = nil
-        penTextButton()
+        //penTextButton()
     }
 
     public func saveText() throws -> Data?{

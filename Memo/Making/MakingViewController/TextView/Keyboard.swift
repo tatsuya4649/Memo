@@ -11,8 +11,8 @@ import UIKit
 import FontAwesome_swift
 extension MakingViewController{
     public func addKeyboardDetection(){
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardOpen), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keybordHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardOpen), name: UIResponder.keyboardWillShowNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keybordHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     @objc func keyboardOpen(_ notification:Notification){
         guard shareBool == nil else{return}

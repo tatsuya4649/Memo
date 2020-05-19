@@ -22,7 +22,11 @@ extension MemoListViewController:CollectionLayoutDelegate,UICollectionViewDelega
             }
         }
         if let memoData = memoDataDicArray[indexPath.item] as? Dictionary<MemoDataElement,Any?>{
-            cell.setUp(self.view.frame.size.width,memoData)
+            let naviHeight = self.navigationController != nil ? self.navigationController!.navigationBar.frame.size.height : 0
+            let statusHeight = UIApplication.shared.statusBarFrame.size.height
+            let tabBarMinY = self.tabBarController != nil ? self.tabBarController!.tabBar.frame.minY : self.view.frame.size.height
+            let collectionHeight = tabBarMinY - (naviHeight + statusHeight)
+            cell.setUp(self.view.frame.size.width,collectionHeight,memoData)
         }
         return cell
     }
@@ -36,6 +40,10 @@ extension MemoListViewController:CollectionLayoutDelegate,UICollectionViewDelega
         memoDetailView = MakingViewController()
         if let memoData = memoDataDicArray[indexPath.item] as? Dictionary<MemoDataElement,Any?>{
             memoDetailView.makingDataToApply(memoData)
+            let statusHeight = UIApplication.shared.statusBarFrame.size.height
+            let naviHeight = self.navigationController != nil ? self.navigationController!.navigationBar.frame.size.height : 0
+            let tabBarMinY = self.tabBarController != nil ? self.tabBarController!.tabBar.frame.minY : self.view.frame.size.height
+            memoDetailView.changeRect(CGRect(x: 0, y: statusHeight+naviHeight, width: self.view.frame.size.width, height: tabBarMinY - (statusHeight+naviHeight)))
             //memoDetailView.addHero()
         }
         memoDetailView.addNaviButton()
@@ -47,7 +55,11 @@ extension MemoListViewController:CollectionLayoutDelegate,UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, _ width: CGFloat, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        let rate = collectionView.frame.size.height/self.view.frame.size.width
+        let naviHeight = self.navigationController != nil ? self.navigationController!.navigationBar.frame.size.height : 0
+        let statusHeight = UIApplication.shared.statusBarFrame.size.height
+        let tabBarMinY = self.tabBarController != nil ? self.tabBarController!.tabBar.frame.minY : self.view.frame.size.height
+        let collectionHeight = tabBarMinY - (naviHeight + statusHeight)
+        let rate = collectionHeight/self.view.frame.size.width
         return rate*width
     }
     

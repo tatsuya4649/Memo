@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 
 extension MakingViewController{
+    public func penTextButtonNavi(){
+        penNaviButton = UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .pencilAlt, style: .solid, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(penNaviButtonClick))
+        textNaviButton = UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .font, style: .solid, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(textNaviButtonClick))
+        self.navigationItem.rightBarButtonItems?.append(penNaviButton)
+        self.navigationItem.rightBarButtonItems?.append(textNaviButton)
+    }
     ///ペンとテキストボタンを追加する関数
     public func penTextButton(){
         guard penButton == nil else{return}
@@ -48,15 +54,31 @@ extension MakingViewController{
     }
     @objc func penButtonClick(_ sender:UIButton){
         print("ペンボタンがクリックされました")
-        removePenTextButton()
+        //removePenTextButton()
+        penButtonClickParent()
+    }
+    @objc func textButtonClick(_ sender:UIButton){
+        print("テキストボタンがクリックされました")
+        //removePenTextButton()
+        textButtonClickParent()
+    }
+    @objc func penNaviButtonClick(_ sender:UIBarButtonItem){
+        print("ペンボタンがクリックされました")
+        guard let tapGesture = tapGesture else{return}
+        doubleTap(tapGesture)
+    }
+    @objc func textNaviButtonClick(_ sender:UIBarButtonItem){
+        print("テキストボタンがクリックされました")
+        guard let longTapGesture = longTapGesture else {return}
+        longPress(longTapGesture)
+    }
+    private func penButtonClickParent(){
         guard let parent = self.parent else{return}
         if let parent = parent as? InfinityMemoController{
             parent.penButtonClick()
         }
     }
-    @objc func textButtonClick(_ sender:UIButton){
-        print("テキストボタンがクリックされました")
-        removePenTextButton()
+    private func textButtonClickParent(){
         guard let parent = self.parent else{return}
         if let parent = parent as? InfinityMemoController{
             parent.textButtonClick()

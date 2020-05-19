@@ -14,6 +14,8 @@ protocol InfinityMemoControllerDelegate:AnyObject {
     func endSaveData()
 }
 
+let DEFAULT_INFINITYVIEW_TITLE = "メモ作成"
+
 class InfinityMemoController: UIPageViewController,UIPageViewControllerDataSource,UIPageViewControllerDelegate {
     //メモの遷移が完了したときに呼び出されるデリゲートメソッド(オプショナル)
     func pageViewController(_ pageViewController: UIPageViewController,didFinishAnimating finished: Bool,previousViewControllers: [UIViewController],transitionCompleted completed: Bool){
@@ -68,28 +70,33 @@ class InfinityMemoController: UIPageViewController,UIPageViewControllerDataSourc
     weak var saveDelegate : InfinityMemoControllerDelegate!
     var penButton : UIButton!
     var textButton : UIButton!
+    var penNaviButton : UIBarButtonItem!
+    var textNaviButton : UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        memoDataArray = Array<Memo>()
-        let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "Memo")
+        if self.navigationController != nil{
+            self.navigationController!.navigationBar.isTranslucent = false
+        }
+        //memoDataArray = Array<Memo>()
+        //let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "Memo")
         
         //同じメモ番号のメモを全て削除する
-        do{
-            memoDataArray = try? manageContext.fetch(fetchReq) as? Array<Memo>
-            if memoDataArray.count > 0{
-                for i in memoDataArray{
-                    manageContext.delete(i)
-                }
-            }
-            do{
-                try manageContext.save()
-            }catch{
-                print("セーブに失敗しました")
-            }
-        }catch{
-            print(error)
-        }
-        self.title = "メモ作成"
+        //do{
+            //memoDataArray = try? manageContext.fetch(fetchReq) as? Array<Memo>
+            //if memoDataArray.count > 0{
+                //for i in memoDataArray{
+                    //manageContext.delete(i)
+                //}
+            //}
+            //do{
+                //try manageContext.save()
+            //}catch{
+                //print("セーブに失敗しました")
+            //}
+        //}catch{
+            //print(error)
+        //}
+        self.title = DEFAULT_INFINITYVIEW_TITLE
         self.pageViewCounter = Int(0)
         making1 = MakingViewController()
         making1.restorationIdentifier = "making1"

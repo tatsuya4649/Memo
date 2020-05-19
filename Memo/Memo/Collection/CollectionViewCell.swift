@@ -27,8 +27,8 @@ class CollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setUp(_ width:CGFloat,_ memoData:Dictionary<MemoDataElement,Any?>){
-        totalView = UIView(frame:CGRect(x: 0, y: 0, width: width, height: width*self.frame.size.height/self.frame.size.width))
+    public func setUp(_ width:CGFloat,_ height:CGFloat,_ memoData:Dictionary<MemoDataElement,Any?>){
+        totalView = UIView(frame:CGRect(x: 0, y: 0, width: width, height: height))
         totalView.backgroundColor = .white
         totalView.layer.cornerRadius = 10
         totalView.layer.borderWidth = 1
@@ -74,7 +74,7 @@ class CollectionViewCell: UICollectionViewCell {
         if let saveDate = memoData[.saveDate] as? Date{
             self.saveDate = saveDate
         }
-        totalView.transform = CGAffineTransform(scaleX: self.frame.size.width/width, y: self.frame.size.width/width)
+        totalView.transform = CGAffineTransform(scaleX: self.frame.size.width/width, y: self.frame.size.height/height)
         totalView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
     }
     public func addHero(){

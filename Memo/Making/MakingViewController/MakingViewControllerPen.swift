@@ -40,6 +40,8 @@ extension MakingViewController:PKCanvasViewDelegate{
             canvasBool = nil
         }
         guard let parent = self.parent else{return}
+        parent.title = nil
+        parent.tabBarItem.title = DEFAULT_INFINITYVIEW_TITLE
         parent.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage.fontAwesomeIcon(name: .chevronDown, style: .solid, textColor: .black, size: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal), style: .done, target: self, action:  #selector(closePencil))]
     }
     public func removeCanvas(){
@@ -47,11 +49,13 @@ extension MakingViewController:PKCanvasViewDelegate{
     }
     @objc func closePencil(){
         removePencilTool()
-        penTextButton()
+        //penTextButton()
         guard let parent = parent else{return}
         if let parent = parent as? InfinityMemoController{
             parent.releaseScroll()
         }
+        parent.title = DEFAULT_INFINITYVIEW_TITLE
+        parent.tabBarItem.title = DEFAULT_INFINITYVIEW_TITLE
         parent.navigationItem.leftBarButtonItem = nil
     }
     public func removePencilTool(){
