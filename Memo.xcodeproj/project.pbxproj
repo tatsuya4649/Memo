@@ -66,7 +66,7 @@
 		747024962445AE4800415F07 /* InfinityMemoTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinityMemoTextView.swift; sourceTree = "<group>"; };
 		747024982445B0CE00415F07 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		7470249B2445B16000415F07 /* InfinityMemoBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinityMemoBackground.swift; sourceTree = "<group>"; };
-		7471E9E22444567600D599DC /* Memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7471E9E22444567600D599DC /* ParaMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParaMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7471E9E52444567600D599DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7471E9E72444567600D599DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7471E9EA2444567600D599DC /* Memo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Memo.xcdatamodel; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 		7471E9E32444567600D599DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7471E9E22444567600D599DC /* Memo.app */,
+				7471E9E22444567600D599DC /* ParaMemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,7 +270,7 @@
 			);
 			name = Memo;
 			productName = Memo;
-			productReference = 7471E9E22444567600D599DC /* Memo.app */;
+			productReference = 7471E9E22444567600D599DC /* ParaMemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -547,7 +547,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Tatsuya.S.Memo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ParaMemo;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -568,7 +568,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Tatsuya.S.Memo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ParaMemo;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
